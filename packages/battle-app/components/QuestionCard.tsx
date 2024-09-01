@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Question as QuestionType } from '@battle-time/common';
 import { atDotCss } from '@iyio/at-dot-css';
 import OptionCard from './OptionCard';
@@ -24,8 +24,27 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
     onNextQuestion,
     onPreviousQuestion,
 }) => {
+    const [isExiting, setIsExisting] = useState(false);
+    const handleNext = () => {
+        setIsExisting(true);
+        setTimeout(() => {
+            onNextQuestion();
+            setIsExisting(false);
+        }, 200);
+    };
+    const handleBack = () => {
+        setIsExisting(true);
+        setTimeout(() => {
+            onPreviousQuestion();
+            setIsExisting(false);
+        }, 200);
+    };
     return (
-        <div className={style.questionWrapper()}>
+        <div
+            className={`${style.questionWrapper()} ${
+                isExiting ? style.slideOut() : style.slideIn()
+            }`}
+        >
             <div className={style.questionImageWrapper()}>
                 <img
                     className={style.questionImage()}
@@ -59,8 +78,8 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
 
                     <NavigationButton
                         currentQuestionIndex={currentQuestionIndex}
-                        onPrev={onPreviousQuestion}
-                        onNext={onNextQuestion}
+                        onPrev={handleBack}
+                        onNext={handleNext}
                         optionSelected={selectedOptionId}
                         onCancel={() => {
                             onAnswerSelect(question.id, null);
@@ -82,14 +101,27 @@ const style = atDotCss({
         // min-height: 100dvh;
         padding: 40px;
         color: #ffffff;
-    
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.5s ease;
     }
  
     @.questionImageWrapper {
          max-width:30%;
           height: auto;
           width:400px;
+
     }
+    @.slideIn{
+        opacity: 1;
+        transform: translateX(0);
+
+        }
+    @.slideOut{
+        opacity: 0;
+        transform: translateX(-2%);
+        }
+
     @.questionImage {
         width: 100%;
     }

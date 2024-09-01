@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { atDotCss } from '@iyio/at-dot-css';
 import Image from 'next/image';
 import Button from './Button';
@@ -11,7 +11,9 @@ type EndOnboardingProps = {
 };
 const EndOnboarding: React.FC<EndOnboardingProps> = ({ onPrev }) => {
     const answers = useSubject(onboardingAnswer);
+    const [isloading, setIsLoading] = useState(false);
     const handleSubmit = async () => {
+        setIsLoading(true);
         try {
             await fetch(`${apiBaseUrl}`, {
                 method: 'POST',
@@ -21,6 +23,8 @@ const EndOnboarding: React.FC<EndOnboardingProps> = ({ onPrev }) => {
             alert("Answers submitted! Let's rock n' roll!");
         } catch (err) {
             console.log(err);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -33,11 +37,19 @@ const EndOnboarding: React.FC<EndOnboardingProps> = ({ onPrev }) => {
                     To the victor go the spoils.
                 </p>
                 <div className={style.navigationButtons()}>
-                    <Button variant="outline" onClick={onPrev}>
+                    <Button
+                        variant="outline"
+                        onClick={onPrev}
+                        disabled={isloading}
+                    >
                         Back
                     </Button>
 
-                    <Button variant="primary" onClick={handleSubmit}>
+                    <Button
+                        variant="primary"
+                        onClick={handleSubmit}
+                        disabled={isloading}
+                    >
                         Let&apos;s rock n&apos; roll
                     </Button>
                 </div>

@@ -89,7 +89,7 @@ export default function Onboard() {
                 <CompleteBattle onPrev={() => setIsOnboardComplete(false)} />
             )}
 
-            {!isOnboardComplete && (
+            {!isOnboardComplete && questions.length !== 0 && (
                 <QuestionCard
                     question={currentQuestion}
                     onAnswerSelect={handleAnswerSelect}
