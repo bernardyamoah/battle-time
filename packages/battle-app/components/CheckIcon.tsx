@@ -1,15 +1,25 @@
-interface CheckIconProps
-{
-    size?:string;
+interface CheckIconProps {
+    size?: string;
 }
 
-export function CheckIcon({
-    size='20px'
-}:CheckIconProps)
-{
+export function CheckIcon({ size = '20px' }: CheckIconProps) {
     return (
-        <svg className="svg-icon" style={{width:size,height:size}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 464c-114.7 0-208-93.31-208-208S141.3 48 256 48s208 93.31 208 208S370.7 464 256 464zM256 336c-18 0-32 14-32 32s13.1 32 32 32c17.1 0 32-14 32-32S273.1 336 256 336zM289.1 128h-51.1C199 128 168 159 168 198c0 13 11 24 24 24s24-11 24-24C216 186 225.1 176 237.1 176h51.1C301.1 176 312 186 312 198c0 8-4 14.1-11 18.1L244 251C236 256 232 264 232 272V288c0 13 11 24 24 24S280 301 280 288V286l45.1-28c21-13 34-36 34-60C360 159 329 128 289.1 128z"/>
+        <svg
+            fill="#000000"
+            className="svg-icon"
+            style={{ width: size, height: size }}
+            viewBox="0 0 1024 1024"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier" fill="#000000">
+                <path d="M351.605 663.268l481.761-481.761c28.677-28.677 75.171-28.677 103.847 0s28.677 75.171 0 103.847L455.452 767.115l.539.539-58.592 58.592c-24.994 24.994-65.516 24.994-90.51 0L85.507 604.864c-28.677-28.677-28.677-75.171 0-103.847s75.171-28.677 103.847 0l162.25 162.25z"></path>
+            </g>
         </svg>
-    )
+    );
 }
