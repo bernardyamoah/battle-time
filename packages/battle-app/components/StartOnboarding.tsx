@@ -3,7 +3,7 @@ import React from 'react';
 import { atDotCss } from '@iyio/at-dot-css';
 import Image from 'next/image';
 import Button from './Button';
-import { startOnboarding } from '../store/battleStart';
+import { startOnboarding } from '../store/onboarding';
 const style = atDotCss({
     name: 'StartBattle',
     css: `

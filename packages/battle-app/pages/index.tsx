@@ -1,4 +1,4 @@
-import { startOnboarding } from '../store/battleStart';
+import { startOnboarding } from '../store/onboarding';
 
 import Onboard from '../components/Onboard';
 import { useEffect, useState } from 'react';

@@ -1,8 +1,8 @@
 import { BehaviorSubject } from 'rxjs';
 
-const initialStartBattleState = false;
+const initialStartOnboardingState = false;
 export const startOnboarding = new BehaviorSubject<boolean>(
-    initialStartBattleState
+    initialStartOnboardingState
 );
 
 const isComplete = false;
